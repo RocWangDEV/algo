@@ -16,52 +16,65 @@
  * @param {number[][]} mat
  * @return {number}
  */
+// var firstCompleteIndex = function (arr, mat) {
+//   let result = null;
+//   const mapIndex = {};
+//   const mapLineIndex = {};
+//   // 多少列
+//   const matVal = mat[0].length;
+//   const flattenedMat = mat.flat();
+
+//   for (let i = 0; i < arr.length; i++) {
+//     // 在矩阵中列的位置
+//     const targetIndex = flattenedMat.findIndex(item => item === arr[i]) % matVal;
+//     // 在矩阵中行的位置
+//     const targetLineIndex = mat.findIndex(item => item.includes(arr[i]));
+
+//     if (!mapIndex[targetIndex]) {
+//       mapIndex[targetIndex] = 1;
+//     }
+//     if (mapIndex[targetIndex]) {
+//       if (
+//         (mapIndex[targetIndex] === mat.length)
+//         && (!result || result > arr[i])
+//       ) {
+//         return i;
+//       }
+//       mapIndex[targetIndex]++;
+//     }
+
+//     if (!mapLineIndex[targetLineIndex]) {
+//       mapLineIndex[targetLineIndex] = 1;
+//     }
+
+//     if (mapLineIndex[targetLineIndex]) {
+//       if (
+//         (mapLineIndex[targetLineIndex] === matVal)
+//         && (!result || result > arr[i])
+//       ) {
+//         return i;
+//       }
+//       mapLineIndex[targetLineIndex]++;
+//     }
+//   }
+//   return -1;
+// };
+
 var firstCompleteIndex = function (arr, mat) {
-  let result = null;
-  const mapIndex = {};
-  const mapLineIndex = {};
-  // 多少列
-  const matVal = mat[0].length;
-  const flattenedMat = mat.flat();
-
-  for (let i = 0; i < arr.length; i++) {
-    // 在矩阵中列的位置
-    const targetIndex = flattenedMat.findIndex(item => item === arr[i]) % matVal;
-    // 在矩阵中行的位置
-    const targetLineIndex = mat.findIndex(item => item.includes(arr[i]));
-
-    if (!mapIndex[targetIndex]) {
-      mapIndex[targetIndex] = 1;
-    }
-    if (mapIndex[targetIndex]) {
-      if (
-        (mapIndex[targetIndex] === mat.length)
-        && (!result || result > arr[i])
-      ) {
-        return i;
-      }
-      mapIndex[targetIndex]++;
-    }
-
-    if (!mapLineIndex[targetLineIndex]) {
-      mapLineIndex[targetLineIndex] = 1;
-    }
-
-    if (mapLineIndex[targetLineIndex]) {
-      if (
-        (mapLineIndex[targetLineIndex] === matVal)
-        && (!result || result > arr[i])
-      ) {
-        return i;
-      }
-      mapLineIndex[targetLineIndex]++;
+  const m = mat[0].length, n = mat.length;
+  const common = {}
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+      common[mat[i][j]] = [i, j];
     }
   }
-  return -1;
+  console.log(common);
 };
 
 const res = firstCompleteIndex(
-  [6, 2, 3, 1, 4, 5],
-  [[5, 1], [2, 4], [6, 3]]
+  // [6, 2, 3, 1, 4, 5],
+  // [[5, 1], [2, 4], [6, 3]]
+  [1, 3, 4, 2],
+  [[1, 4], [2, 3]]
 );
 console.log(res);
