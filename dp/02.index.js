@@ -25,4 +25,5 @@ function findCrossMax(list, left, middle, right) {
   return leftSum + rightSum;
 }
 
-console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]));
+// console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]));
+console.log(maxSubArray([2, -7, 6, -2, 8, -2, 9, 6, -1, -2]));
