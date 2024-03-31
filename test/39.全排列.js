@@ -12,10 +12,15 @@ function g(str, index, ans) {
   if (index === str.length) {
     ans.push(str.join(""));
   } else {
+    const visited = new Array();
     for (let i = index; i < str.length; i++) {
-      swap(str, index, i);
-      g(str, index + 1, ans);
-      swap(str, index, i);
+      console.log(str[i]);
+      if (!visited[str[i]]) {
+        visited[str[i]] = true;
+        swap(str, index, i);
+        g(str, index + 1, ans);
+        swap(str, index, i);
+      }
     }
   }
 }
@@ -38,7 +43,7 @@ function f(rest, path, ans) {
   }
 }
 
-console.log(all("abc"));
+console.log(all("acc"));
 
 // a b c d
 
